@@ -6,18 +6,34 @@ let myDivs = [];
 const container = document.getElementById("container");
 const clearBtn = document.getElementById("clearBtn");
 
+console.log(container.clientWidth);
 // Functions
 
 clearBtn.addEventListener("click", clearDivs);
 
+// function createDiv(squareSize) {
+//   let squareDiv = document.createElement("div");
+//   squareDiv.className = "square";
+//   squareDiv.style.width = squareSize;
+//   squareDiv.style.height = squareSize;
+//   squareDiv.addEventListener("click", clickedDiv);
+//   return squareDiv;
+// }
+
+// function clickedDiv() {
+//     this.classList.toggle("clicked");
+//   }
+
 function createDiv(squareSize) {
   let squareDiv = document.createElement("div");
-
   squareDiv.className = "square";
   squareDiv.style.width = squareSize;
   squareDiv.style.height = squareSize;
-  squareDiv.addEventListener("click", clickedDiv);
+  squareDiv.addEventListener("mouseenter", mouseEnter);
   return squareDiv;
+}
+function mouseEnter() {
+  this.classList.add("clicked");
 }
 
 function createMultipleDivs() {
@@ -27,10 +43,6 @@ function createMultipleDivs() {
     myDivs.push(createDiv(squareSize));
     container.appendChild(myDivs[i]);
   }
-}
-
-function clickedDiv() {
-  this.classList.toggle("clicked");
 }
 
 function clearDivs() {
